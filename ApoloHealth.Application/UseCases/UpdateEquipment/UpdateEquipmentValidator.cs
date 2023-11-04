@@ -6,7 +6,6 @@ public class UpdateEquipmentValidator : AbstractValidator<UpdateEquipmentRequest
 {
     public UpdateEquipmentValidator()
     {
-        RuleFor(x => x.Name).NotEmpty();
-        RuleFor(x => x.Description).NotEmpty();
+        RuleFor(x => x.Id).NotEmpty();
     }
 }

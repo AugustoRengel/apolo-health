@@ -27,9 +27,14 @@ public class UpdateEquipmentHandler : IRequestHandler<UpdateEquipmentRequest, Up
         var equipment = await _equipmentRepository.Get(command.Id, cancellationToken);
 
         if (equipment == null) { return default; }
-
-        equipment.Name = command.Name;
-        equipment.Description = command.Description;
+        var equipmentUpdate = _mapper.Map<Equipment>(command);
+        if (!string.IsNullOrEmpty(equipmentUpdate.Name)) { equipment.Name = equipmentUpdate.Name; }
+        if (!string.IsNullOrEmpty(equipmentUpdate.Description)) {  equipment.Description = equipmentUpdate.Description; }
+        if(equipmentUpdate.Status != null) { equipment.Status = equipmentUpdate.Status; }
+        if (!string.IsNullOrEmpty(equipmentUpdate.Maker)) { equipment.Maker = equipmentUpdate.Maker; }
+        if (equipmentUpdate.FabricationDate != null) { equipment.FabricationDate = equipmentUpdate.FabricationDate; }
+        if (equipmentUpdate.Name != null) { equipment.Name = equipmentUpdate.Name; }
+        if(equipmentUpdate.MaintanceRecords != null) { equipment.MaintanceRecords = equipmentUpdate.MaintanceRecords; }
 
         _equipmentRepository.Update(equipment);
 

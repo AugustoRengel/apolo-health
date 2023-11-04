@@ -15,4 +15,8 @@
     <ProjectReference Include="..\ApoloHealth.Persistence\ApoloHealth.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+
 </Project>

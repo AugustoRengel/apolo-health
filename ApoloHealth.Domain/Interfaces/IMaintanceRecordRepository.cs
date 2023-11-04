@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace ApoloHealth.Domain.Interfaces;
 
-public interface IEquipmentRepository : IBaseRepository<Equipment>
+public interface IMaintanceRecordRepository : IBaseRepository<MaintanceRecord>
 {
-    Task<Equipment?> GetByName(string name, CancellationToken cancellationToken);
 }

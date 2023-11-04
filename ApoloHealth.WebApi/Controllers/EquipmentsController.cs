@@ -33,7 +33,7 @@ public class EquipmentsController : ControllerBase
         return Ok(response);
     }
 
-    [HttpPut("{id}")]
+    [HttpPatch("{id}")]
     public async Task<ActionResult<UpdateEquipmentResponse>> Update(Guid id, UpdateEquipmentRequest request, CancellationToken cancellationToken)
     {
         if(id != request.Id)

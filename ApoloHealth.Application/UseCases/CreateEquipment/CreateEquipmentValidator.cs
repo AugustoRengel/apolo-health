@@ -13,6 +13,9 @@ namespace ApoloHealth.Application.UseCases.CreateEquipment
         { 
             RuleFor(x => x.Name).NotEmpty();
             RuleFor(x => x.Description).NotEmpty();
+            RuleFor(x => x.Status).NotEmpty();
+            RuleFor(x => x.Maker).NotEmpty();
+            RuleFor(x => x.FabricationDate).NotEmpty();
         }
     }
 }
