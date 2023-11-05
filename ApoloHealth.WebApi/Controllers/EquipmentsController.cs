@@ -1,7 +1,7 @@
-﻿using ApoloHealth.Application.UseCases.CreateEquipment;
-using ApoloHealth.Application.UseCases.DeleteEquipment;
-using ApoloHealth.Application.UseCases.GetAllEquipment;
-using ApoloHealth.Application.UseCases.UpdateEquipment;
+﻿using ApoloHealth.Application.UseCases.EquipmentOperations.Create;
+using ApoloHealth.Application.UseCases.EquipmentOperations.Delete;
+using ApoloHealth.Application.UseCases.EquipmentOperations.GetAll;
+using ApoloHealth.Application.UseCases.EquipmentOperations.Update;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
