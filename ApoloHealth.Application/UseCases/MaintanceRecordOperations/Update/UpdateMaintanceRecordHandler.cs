@@ -37,6 +37,8 @@ public class UpdateMaintanceRecordHandler : IRequestHandler<UpdateMaintanceRecor
         if (maintanceRecordUpdate.FinalState != null) { maintanceRecord.FinalState = maintanceRecordUpdate.FinalState; }
         if (!string.IsNullOrEmpty(maintanceRecordUpdate.ProblemDescription)) { maintanceRecord.ProblemDescription = maintanceRecordUpdate.ProblemDescription; }
         if (!string.IsNullOrEmpty(maintanceRecordUpdate.SolutionDescription)) { maintanceRecord.SolutionDescription = maintanceRecordUpdate.SolutionDescription; }
+        if (maintanceRecordUpdate.WasDone != null) { maintanceRecord.WasDone = maintanceRecordUpdate.WasDone; }
+        if (maintanceRecordUpdate.Type != null) { maintanceRecord.Type = maintanceRecordUpdate.Type; }
 
         _maintanceRecordRepository.Update(maintanceRecord);
 

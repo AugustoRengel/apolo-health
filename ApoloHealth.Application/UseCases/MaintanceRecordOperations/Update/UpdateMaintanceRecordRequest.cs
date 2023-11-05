@@ -10,12 +10,13 @@ namespace ApoloHealth.Application.UseCases.MaintanceRecordOperations.Update;
 
 public sealed record UpdateMaintanceRecordRequest(
     Guid Id,
-    DateTime StartDate,
-    DateTime EndDate,
-    string Technician,
-    EquipmentStatus InitialState,
-    EquipmentStatus FinalState,
-    string ProblemDescription,
-    string SolutionDescription,
-    Guid EquipmentId
+    DateTime? StartDate,
+    DateTime? EndDate,
+    string? Technician,
+    EquipmentStatus? InitialState,
+    EquipmentStatus? FinalState,
+    string? ProblemDescription,
+    string? SolutionDescription,
+    bool? WasDone,
+    MaintanceType? Type
     ) : IRequest<UpdateMaintanceRecordResponse>;

@@ -18,6 +18,7 @@ public sealed class ClassValidator : AbstractValidator<CreateMaintanceRecordRequ
         RuleFor(x => x.FinalState).NotEmpty();
         RuleFor(x => x.ProblemDescription).NotEmpty();
         RuleFor(x => x.SolutionDescription).NotEmpty();
+        RuleFor(x => x.Type).NotEmpty();
         RuleFor(x => x.EquipmentId).NotEmpty();
     }
 }

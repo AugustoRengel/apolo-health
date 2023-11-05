@@ -11,7 +11,12 @@ namespace ApoloHealth.Application.UseCases.EquipmentOperations.Create;
 public sealed record CreateEquipmentRequest(
     string Name,
     string Description,
+    EquipmentType Type,
     EquipmentStatus Status,
     string Maker,
-    DateTime FabricationDate
+    DateTime FabricationDate,
+    EquipmentSector Sector,
+    int MonthsBetweenPreventive,
+    DateTime? LastPreventiveDate,
+    int MinutesOfPreventive
     ) : IRequest<CreateEquipmentResponse>;

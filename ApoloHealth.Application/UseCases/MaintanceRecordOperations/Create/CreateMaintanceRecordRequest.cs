@@ -16,5 +16,7 @@ public sealed record CreateMaintanceRecordRequest(
     EquipmentStatus FinalState,
     string ProblemDescription,
     string SolutionDescription,
+    bool? WasDone,
+    MaintanceType Type,
     Guid EquipmentId
     ) : IRequest<CreateMaintanceRecordResponse>;

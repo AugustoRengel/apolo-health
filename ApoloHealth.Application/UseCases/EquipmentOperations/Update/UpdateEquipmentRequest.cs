@@ -12,9 +12,14 @@ public sealed record UpdateEquipmentRequest(
     Guid Id,
     string? Name,
     string? Description,
+    EquipmentType? Type,
     EquipmentStatus? Status,
     string? Maker,
     DateTime? FabricationDate,
+    EquipmentSector? Sector,
+    int? MonthsBetweenPreventive,
+    DateTime? LastPreventiveDate,
+    int? MinutesOfPreventive,
     List<MaintanceRecordDTO>? MaintanceRecordsDTO
     ) : IRequest<UpdateEquipmentResponse>;
 
@@ -26,5 +31,6 @@ public sealed record MaintanceRecordDTO(
     EquipmentStatus FinalState,
     string ProblemDescription,
     string SolutionDescription,
-    Guid EquipmentId
+    bool WasDone,
+    MaintanceType Type
     );

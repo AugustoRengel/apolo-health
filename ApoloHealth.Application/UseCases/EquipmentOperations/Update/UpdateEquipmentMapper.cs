@@ -12,14 +12,16 @@ public sealed class UpdateEquipmentMapper : Profile
              opt.MapFrom(src => src.MaintanceRecordsDTO.Select(x =>
              new MaintanceRecord()
              {
-                 EquipmentId = x.EquipmentId,
+                 EquipmentId = src.Id,
                  StartDate = x.StartDate,
                  EndDate = x.EndDate,
                  Technician = x.Technician,
                  InitialState = x.InitialState,
                  FinalState = x.FinalState,
                  ProblemDescription = x.ProblemDescription,
-                 SolutionDescription = x.SolutionDescription
+                 SolutionDescription = x.SolutionDescription,
+                 WasDone = x.WasDone,
+                 Type = x.Type
              }
              ))
           );
