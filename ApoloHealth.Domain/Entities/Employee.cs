@@ -11,7 +11,8 @@ public class Employee : Person
     public RoleType? Role { get; set; }
     public decimal? Wage { get; set; }
 
-    public List<Appointment> Appointments { get; set; } = new List<Appointment>();
+    public List<Appointment> Appointments { get; set; } = new();
+    public List<Equipment> Equipments { get; set; } = new();
 }
 
 public enum RoleType

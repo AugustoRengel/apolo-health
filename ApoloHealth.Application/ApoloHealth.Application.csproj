@@ -12,6 +12,9 @@
 
   <ItemGroup>
     <Folder Include="Shared\Exceptions\" />
+    <Folder Include="UseCases\AppointmentOperations\" />
+    <Folder Include="UseCases\CustomerOperations\" />
+    <Folder Include="UseCases\EmployeeOperations\" />
   </ItemGroup>
 
   <ItemGroup>

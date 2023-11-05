@@ -15,8 +15,8 @@ public class Appointment : BaseEntity
     public DateTime? EndDate { get; set; }
     public bool? WasDone { get; set; }
 
-    public List<Equipment> Equipments { get; set; } = new List<Equipment>();
-    public List<Employee> Employees { get; set; } = new List<Employee>();
+    public List<Equipment> Equipments { get; set; } = new();
+    public List<Employee> Employees { get; set; } = new();
 
     public Guid? ExamId { get; set; }
     public Guid? CustomerId { get; set; }

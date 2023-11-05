@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApoloHealth.Application.UseCases.EquipmentOperations.GetAll;
+namespace ApoloHealth.Application.UseCases.ExamOperations.GetAll;
 
 public sealed class GetAllEquipmentHandler : IRequestHandler<GetAllEquipmentRequest, List<GetAllEquipmentResponse>>
 {

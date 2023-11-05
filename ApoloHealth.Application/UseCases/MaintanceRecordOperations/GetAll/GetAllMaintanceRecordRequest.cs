@@ -1,4 +1,4 @@
-﻿using ApoloHealth.Application.UseCases.EquipmentOperations.GetAll;
+﻿using ApoloHealth.Application.UseCases.ExamOperations.GetAll;
 using MediatR;
 using System;
 using System.Collections.Generic;

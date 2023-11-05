@@ -8,7 +8,9 @@ namespace ApoloHealth.Domain.Entities;
 
 public class Exam : BaseEntity
 {
+    public string? Title {  get; set; }
+    public string? Description { get; set; }
     public int? DurationInMinutes { get; set; }
-    public List<EquipmentType>? RequiredEquipmentsTypes { get; set; }
-    public List<RoleType>? RequiredEmployeesRoles { get; set; }
+    public RoleType? RequiredEmployeeRole { get; set; }
+    public EquipmentType? RequiredEquipmentType { get; set; }
 }

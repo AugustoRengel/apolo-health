@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApoloHealth.Application.UseCases.EquipmentOperations.Create
+namespace ApoloHealth.Application.UseCases.ExamOperations.Create
 {
     public sealed class CreateEquipmentValidator : AbstractValidator<CreateEquipmentRequest>
     {
@@ -20,6 +20,7 @@ namespace ApoloHealth.Application.UseCases.EquipmentOperations.Create
             RuleFor(x => x.Sector).NotEmpty();
             RuleFor(x => x.MonthsBetweenPreventive).NotEmpty();
             RuleFor(x => x.MinutesOfPreventive).NotEmpty();
+            RuleFor(x => x.RequiresTechnician).NotEmpty();
         }
     }
 }

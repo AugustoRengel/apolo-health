@@ -1,4 +1,4 @@
-﻿using ApoloHealth.Application.UseCases.EquipmentOperations.Create;
+﻿using ApoloHealth.Application.UseCases.ExamOperations.Create;
 using ApoloHealth.Domain.Entities;
 using ApoloHealth.Domain.Interfaces;
 using AutoMapper;

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApoloHealth.Application.UseCases.EquipmentOperations.Create;
+namespace ApoloHealth.Application.UseCases.ExamOperations.Create;
 
 public sealed record CreateEquipmentRequest(
     string Name,
@@ -18,5 +18,6 @@ public sealed record CreateEquipmentRequest(
     EquipmentSector Sector,
     int MonthsBetweenPreventive,
     DateTime? LastPreventiveDate,
-    int MinutesOfPreventive
+    int MinutesOfPreventive,
+    bool RequiresTechnician
     ) : IRequest<CreateEquipmentResponse>;

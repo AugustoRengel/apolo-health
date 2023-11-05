@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApoloHealth.Application.UseCases.EquipmentOperations.Delete;
+namespace ApoloHealth.Application.UseCases.ExamOperations.Delete;
 
 public class DeleteEquipmentHandler : IRequestHandler<DeleteEquipmentRequest, DeleteEquipmentResponse>
 {

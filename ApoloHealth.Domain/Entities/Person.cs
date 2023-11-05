@@ -13,10 +13,26 @@ public class Person : BaseEntity
     public DateTime? BirthDate { get; set; }
     public string? Email { get; set; }
     public string? Phone { get; set; }
-    public bool? Gender { get; set; }
+    public GenderType? Gender { get; set; }
     public string? Nationality { get; set; }
-    public string? MaritalStatus { get; set; }
+    public MaritalStatusType? MaritalStatus { get; set; }
 
     public List<Address> Addresses { get; set; } = new List<Address>();
 
+}
+
+public enum GenderType
+{
+    Male = 1,
+    Female = 2
+}
+
+public enum MaritalStatusType
+{
+    Single = 1,
+    Married = 2,
+    Divorced = 3,
+    Widowed = 4,
+    Separated = 5,
+    Other = 6
 }

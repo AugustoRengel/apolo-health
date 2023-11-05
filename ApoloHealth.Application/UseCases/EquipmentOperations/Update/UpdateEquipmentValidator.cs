@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace ApoloHealth.Application.UseCases.EquipmentOperations.Update;
+namespace ApoloHealth.Application.UseCases.ExamOperations.Update;
 
 public class UpdateEquipmentValidator : AbstractValidator<UpdateEquipmentRequest>
 {

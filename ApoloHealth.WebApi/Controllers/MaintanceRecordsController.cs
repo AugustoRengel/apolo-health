@@ -1,13 +1,8 @@
-﻿using ApoloHealth.Application.UseCases.EquipmentOperations.Create;
-using ApoloHealth.Application.UseCases.EquipmentOperations.Delete;
-using ApoloHealth.Application.UseCases.EquipmentOperations.GetAll;
-using ApoloHealth.Application.UseCases.EquipmentOperations.Update;
-using ApoloHealth.Application.UseCases.MaintanceRecordOperations.Create;
+﻿using ApoloHealth.Application.UseCases.MaintanceRecordOperations.Create;
 using ApoloHealth.Application.UseCases.MaintanceRecordOperations.Delete;
 using ApoloHealth.Application.UseCases.MaintanceRecordOperations.GetAll;
 using ApoloHealth.Application.UseCases.MaintanceRecordOperations.Update;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApoloHealth.WebApi.Controllers;

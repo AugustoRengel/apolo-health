@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApoloHealth.Application.UseCases.EquipmentOperations.Update;
+namespace ApoloHealth.Application.UseCases.ExamOperations.Update;
 
 public sealed record UpdateEquipmentRequest(
     Guid Id,

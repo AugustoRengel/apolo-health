@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApoloHealth.Application.UseCases.EquipmentOperations.Update
+namespace ApoloHealth.Application.UseCases.ExamOperations.Update
 {
     public sealed record UpdateEquipmentResponse
     {
@@ -22,6 +22,10 @@ namespace ApoloHealth.Application.UseCases.EquipmentOperations.Update
         public DateTime? LastPreventiveDate { get; set; }
         public int? MinutesOfPreventive { get; set; }
 
+        public bool RequiresTechnician { get; set; }
+
+        public List<Employee>? Technicians { get; set; }
         public List<MaintanceRecord>? MaintanceRecords { get; set; }
+        public List<Appointment>? Appointments { get; set; }
     }
 }

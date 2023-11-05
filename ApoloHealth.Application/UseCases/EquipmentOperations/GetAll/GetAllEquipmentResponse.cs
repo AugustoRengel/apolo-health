@@ -1,6 +1,6 @@
 ﻿using ApoloHealth.Domain.Entities;
 
-namespace ApoloHealth.Application.UseCases.EquipmentOperations.GetAll;
+namespace ApoloHealth.Application.UseCases.ExamOperations.GetAll;
 
 public sealed record GetAllEquipmentResponse
 {
@@ -17,5 +17,9 @@ public sealed record GetAllEquipmentResponse
     public DateTime? LastPreventiveDate { get; set; }
     public int? MinutesOfPreventive { get; set; }
 
+    public bool RequiresTechnician { get; set; }
+
+    public List<Employee>? Technicians { get; set; }
     public List<MaintanceRecord>? MaintanceRecords { get; set; }
+    public List<Appointment>? Appointments { get; set; }
 }

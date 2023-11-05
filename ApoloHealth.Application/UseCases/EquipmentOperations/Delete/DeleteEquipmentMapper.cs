@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApoloHealth.Application.UseCases.EquipmentOperations.Delete;
+namespace ApoloHealth.Application.UseCases.ExamOperations.Delete;
 
 public sealed class DeleteEquipmentMapper : Profile
 {

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApoloHealth.Application.UseCases.EquipmentOperations.Create;
+namespace ApoloHealth.Application.UseCases.ExamOperations.Create;
 
 internal class CreateEquipmentHandler : IRequestHandler<CreateEquipmentRequest, CreateEquipmentResponse>
 {

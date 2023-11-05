@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApoloHealth.Application.UseCases.EquipmentOperations.Create
+namespace ApoloHealth.Application.UseCases.ExamOperations.Create
 {
     public sealed class CreateEquipmentMapper : Profile
     {

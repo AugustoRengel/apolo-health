@@ -19,7 +19,11 @@ public class Equipment : BaseEntity
     public DateTime? LastPreventiveDate { get; set; }
     public int? MinutesOfPreventive { get; set; }
 
+    public bool RequiresTechnician { get; set; } = false;
+
+    public List<Employee>? Technicians { get; set; } = new();
     public List<MaintanceRecord> MaintanceRecords { get; set; } = new();
+    public List<Appointment> Appointments { get; set; } = new();
 }
 
 public enum EquipmentStatus

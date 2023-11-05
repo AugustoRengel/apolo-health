@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApoloHealth.Application.UseCases.EquipmentOperations.Update;
+namespace ApoloHealth.Application.UseCases.ExamOperations.Update;
 
 public class UpdateEquipmentHandler : IRequestHandler<UpdateEquipmentRequest, UpdateEquipmentResponse>
 {

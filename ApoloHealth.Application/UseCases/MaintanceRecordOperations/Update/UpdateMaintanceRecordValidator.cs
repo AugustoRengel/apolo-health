@@ -1,4 +1,4 @@
-﻿using ApoloHealth.Application.UseCases.EquipmentOperations.Update;
+﻿using ApoloHealth.Application.UseCases.ExamOperations.Update;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
