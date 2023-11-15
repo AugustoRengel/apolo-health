@@ -28,7 +28,7 @@ public class UpdateEquipmentHandler : IRequestHandler<UpdateEquipmentRequest, Up
         if (equipment == null) { return default; }
         var equipmentUpdate = _mapper.Map<Equipment>(command);
 
-        if (!string.IsNullOrEmpty(equipmentUpdate.Name)) { equipment.Name = equipmentUpdate.Name; }
+        if (!string.IsNullOrEmpty(equipmentUpdate.Code)) { equipment.Code = equipmentUpdate.Code; }
         if (!string.IsNullOrEmpty(equipmentUpdate.Description)) { equipment.Description = equipmentUpdate.Description; }
         if (equipmentUpdate.Type != null) { equipment.Type = equipmentUpdate.Type; }
         if (equipmentUpdate.Status != null) { equipment.Status = equipmentUpdate.Status; }
@@ -38,8 +38,6 @@ public class UpdateEquipmentHandler : IRequestHandler<UpdateEquipmentRequest, Up
         if (equipmentUpdate.MonthsBetweenPreventive != null) { equipment.MonthsBetweenPreventive = equipmentUpdate.MonthsBetweenPreventive; }
         if (equipmentUpdate.LastPreventiveDate != null) { equipment.LastPreventiveDate = equipmentUpdate.LastPreventiveDate; }
         if (equipmentUpdate.MinutesOfPreventive != null) { equipment.MinutesOfPreventive = equipmentUpdate.MinutesOfPreventive; }
-
-        if (equipmentUpdate.MaintanceRecords != null) { equipment.MaintanceRecords = equipmentUpdate.MaintanceRecords; }
 
         _equipmentRepository.Update(equipment);
 

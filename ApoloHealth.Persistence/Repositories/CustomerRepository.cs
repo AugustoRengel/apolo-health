@@ -13,6 +13,7 @@ internal class CustomerRepository : BaseRepository<Customer>, ICustomerRepositor
     {
         return await _context.Set<Customer>()
             .Include(e => e.Addresses)
+            .Include(e => e.Appointments)
             .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
     }
 

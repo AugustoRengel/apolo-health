@@ -14,6 +14,5 @@ public sealed record UpdateEmployeeRequest(
     string? Phone,
     GenderType? Gender,
     string? Nationality,
-    MaritalStatusType? MaritalStatus,
-    List<Address>? Addresses
+    MaritalStatusType? MaritalStatus
     ) : IRequest<UpdateEmployeeResponse>;

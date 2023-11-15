@@ -11,7 +11,6 @@ namespace ApoloHealth.Application.UseCases.ExamOperations.Create
     {
         public CreateEquipmentValidator()
         {
-            RuleFor(x => x.Name).NotEmpty();
             RuleFor(x => x.Description).NotEmpty();
             RuleFor(x => x.Type).NotEmpty();
             RuleFor(x => x.Status).NotEmpty();
@@ -20,7 +19,6 @@ namespace ApoloHealth.Application.UseCases.ExamOperations.Create
             RuleFor(x => x.Sector).NotEmpty();
             RuleFor(x => x.MonthsBetweenPreventive).NotEmpty();
             RuleFor(x => x.MinutesOfPreventive).NotEmpty();
-            RuleFor(x => x.RequiresTechnician).NotEmpty();
         }
     }
 }

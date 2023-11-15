@@ -17,7 +17,5 @@ public sealed record CreateEmployeeResponse
     public GenderType? Gender { get; set; }
     public string? Nationality { get; set; }
     public MaritalStatusType? MaritalStatus { get; set; }
-
-    public List<Address> Addresses { get; set; }
 }
 

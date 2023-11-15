@@ -34,7 +34,6 @@ public class UpdateCustomerHandler : IRequestHandler<UpdateCustomerRequest, Upda
         if (customerUpdate.Gender != null) { customer.Gender = customerUpdate.Gender; }
         if (!string.IsNullOrEmpty(customerUpdate.Nationality)) { customer.Nationality = customerUpdate.Nationality; }
         if (customerUpdate.MaritalStatus != null) { customer.MaritalStatus = customerUpdate.MaritalStatus; }
-        if (customerUpdate.Addresses != null) { customer.Addresses = customerUpdate.Addresses; }
 
         _customerRepository.Update(customer);
 

@@ -6,7 +6,7 @@ public sealed record CreateEquipmentResponse
 {
     public Guid Id { get; set; }
 
-    public string? Name { get; set; }
+    public string? Code { get; set; }
     public string? Description { get; set; }
     public EquipmentType? Type { get; set; }
     public EquipmentStatus? Status { get; set; }
@@ -17,7 +17,6 @@ public sealed record CreateEquipmentResponse
     public DateTime? LastPreventiveDate { get; set; }
     public int? MinutesOfPreventive { get; set; }
 
-    public bool RequiresTechnician { get; set; }
 
     public List<Employee>? Technicians { get; set; }
     public List<MaintanceRecord>? MaintanceRecords { get; set; }

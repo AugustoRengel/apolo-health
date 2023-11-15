@@ -34,7 +34,6 @@ public class UpdateEmployeeHandler : IRequestHandler<UpdateEmployeeRequest, Upda
         if (employeeUpdate.Gender != null) { employee.Gender = employeeUpdate.Gender; }
         if (!string.IsNullOrEmpty(employeeUpdate.Nationality)) { employee.Nationality = employeeUpdate.Nationality; }
         if (employeeUpdate.MaritalStatus != null) { employee.MaritalStatus = employeeUpdate.MaritalStatus; }
-        if (employeeUpdate.Addresses != null) { employee.Addresses = employeeUpdate.Addresses; }
 
         _employeeRepository.Update(employee);
 

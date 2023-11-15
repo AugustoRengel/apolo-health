@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ namespace ApoloHealth.Domain.Entities;
 
 public class Equipment : BaseEntity
 {
-    public string? Name { get; set; }
+    public string? Code { get; set; }
     public string? Description { get; set; }
     public EquipmentType? Type { get; set; }
     public EquipmentStatus? Status { get; set; }
@@ -19,12 +20,11 @@ public class Equipment : BaseEntity
     public DateTime? LastPreventiveDate { get; set; }
     public int? MinutesOfPreventive { get; set; }
 
-    public bool RequiresTechnician { get; set; } = false;
-
-    public List<Employee>? Technicians { get; set; } = new();
+    public List<Employee> Technicians { get; set; } = new();
     public List<MaintanceRecord> MaintanceRecords { get; set; } = new();
     public List<Appointment> Appointments { get; set; } = new();
 }
+
 
 public enum EquipmentStatus
 {
@@ -47,6 +47,26 @@ public enum EquipmentSector
 
 public enum EquipmentType
 {
-    Electrocardiograph = 1,
-    Xray = 2
+    [Description("EB")]
+    ElectricScalpel = 1,
+    [Description("BV")]
+    VacuumPump = 2,
+    [Description("CD")]
+    Defibrillator = 3,
+    [Description("EC")]
+    Electrocardiograph = 4,
+    [Description("EE")]
+    Electroencephalograph = 5,
+    [Description("ME")]
+    SurgicalTable = 6,
+    [Description("MF")]
+    PhysiologicalMonitor = 7,
+    [Description("AR")]
+    XRayMachine = 8,
+    [Description("BC")]
+    Bronchoscope = 9,
+    [Description("MM")]
+    MammographyMachine = 10,
+    [Description("PR")]
+    XRayProcessor = 11
 }

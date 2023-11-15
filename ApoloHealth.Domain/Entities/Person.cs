@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ApoloHealth.Domain.Entities;
 
-public class Person : BaseEntity
+public abstract class Person : BaseEntity
 {
     public string? Name { get; set; }
     public string? CPF {  get; set; }
@@ -17,7 +19,8 @@ public class Person : BaseEntity
     public string? Nationality { get; set; }
     public MaritalStatusType? MaritalStatus { get; set; }
 
-    public List<Address> Addresses { get; set; } = new List<Address>();
+    [JsonIgnore]
+    public List<Address>? Addresses { get; set; } = new();
 
 }
 

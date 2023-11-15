@@ -19,13 +19,13 @@ public sealed record GetAllEmployeeResponse
     public MaritalStatusType? MaritalStatus { get; set; }
 
     public List<Address>? Addresses { get; set; }
-    public List<EquipmentDTO>? EquipmentsDTO { get; set; }
+    public List<EquipmentDTO>? Equipments { get; set; }
 }
 public sealed record EquipmentDTO
 {
     public Guid Id { get; set; }
 
-    public string? Name { get; set; }
+    public string? Code { get; set; }
     public string? Description { get; set; }
     public EquipmentType? Type { get; set; }
     public EquipmentStatus? Status { get; set; }

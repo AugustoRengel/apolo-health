@@ -10,7 +10,7 @@ namespace ApoloHealth.Application.UseCases.ExamOperations.Update;
 
 public sealed record UpdateEquipmentRequest(
     Guid Id,
-    string? Name,
+    string? Code,
     string? Description,
     EquipmentType? Type,
     EquipmentStatus? Status,
@@ -19,18 +19,5 @@ public sealed record UpdateEquipmentRequest(
     EquipmentSector? Sector,
     int? MonthsBetweenPreventive,
     DateTime? LastPreventiveDate,
-    int? MinutesOfPreventive,
-    List<MaintanceRecordDTO>? MaintanceRecordsDTO
+    int? MinutesOfPreventive
     ) : IRequest<UpdateEquipmentResponse>;
-
-public sealed record MaintanceRecordDTO(
-    DateTime StartDate,
-    DateTime EndDate,
-    string Technician,
-    EquipmentStatus InitialState,
-    EquipmentStatus FinalState,
-    string ProblemDescription,
-    string SolutionDescription,
-    bool WasDone,
-    MaintanceType Type
-    );

@@ -14,10 +14,11 @@ public class Appointment : BaseEntity
     public DateTime? StartDate { get; set; }
     public DateTime? EndDate { get; set; }
     public bool? WasDone { get; set; }
+    public bool? RequiresTechnician { get; set; }
 
-    public List<Equipment> Equipments { get; set; } = new();
-    public List<Employee> Employees { get; set; } = new();
-
+    public Guid? EquipmentId { get; set; }
+    public Guid? EmployeeId { get; set; }
+    public Guid? TechnicianId {  get; set; }
     public Guid? ExamId { get; set; }
     public Guid? CustomerId { get; set; }
 }

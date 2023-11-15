@@ -1,6 +1,7 @@
 ﻿using ApoloHealth.Domain.Entities;
 using ApoloHealth.Domain.Interfaces;
 using ApoloHealth.Persistence.Context;
+using AutoMapper.Execution;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApoloHealth.Persistence.Repositories;
@@ -9,16 +10,19 @@ internal class EquipmentRepository : BaseRepository<Equipment>, IEquipmentReposi
 {
     public EquipmentRepository(AppDbContext context) : base(context) { }
 
-    public async Task<Equipment?> GetByName(string name, CancellationToken cancellationToken)
+    public new void Create(Equipment equipment)
     {
-        return await _context.Set<Equipment>()
-            .Include(e => e.MaintanceRecords)
-            .FirstOrDefaultAsync(x => x.Name == name, cancellationToken);
+        equipment.DateCreated = DateTime.Now;
+        int numberOfEquipmentsOfType = _context.Equipments.Count(e => e.Type == equipment.Type);
+        equipment.Code = equipment.Sector.ToString() + equipment.Type.ToString() + numberOfEquipmentsOfType.ToString("D4");
+        _context.Add(equipment);
     }
+
     public new async Task<Equipment?> Get(Guid id, CancellationToken cancellationToken)
     {
         return await _context.Set<Equipment>()
             .Include(e => e.MaintanceRecords)
+            .Include(e => e.Technicians)
             .FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
     }
 
@@ -26,6 +30,8 @@ internal class EquipmentRepository : BaseRepository<Equipment>, IEquipmentReposi
     {
         return await _context.Set<Equipment>()
             .Include(e => e.MaintanceRecords)
+            .Include(e => e.Technicians)
+                .ThenInclude(emp => emp.Addresses)
             .ToListAsync(cancellationToken);
     }
 }

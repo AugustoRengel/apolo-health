@@ -6,7 +6,7 @@ public sealed record GetAllEquipmentResponse
 {
     public Guid Id { get; set; }
 
-    public string? Name { get; set; }
+    public string? Code { get; set; }
     public string? Description { get; set; }
     public EquipmentType? Type { get; set; }
     public EquipmentStatus? Status { get; set; }
@@ -17,9 +17,26 @@ public sealed record GetAllEquipmentResponse
     public DateTime? LastPreventiveDate { get; set; }
     public int? MinutesOfPreventive { get; set; }
 
-    public bool RequiresTechnician { get; set; }
-
-    public List<Employee>? Technicians { get; set; }
+    public List<EmployeeDTO>? Technicians { get; set; }
     public List<MaintanceRecord>? MaintanceRecords { get; set; }
     public List<Appointment>? Appointments { get; set; }
+}
+
+public sealed record EmployeeDTO()
+{
+    public Guid Id { get; set; }
+
+    public RoleType? Role { get; set; }
+    public decimal? Wage { get; set; }
+
+    public string? Name { get; set; }
+    public string? CPF { get; set; }
+    public DateTime? BirthDate { get; set; }
+    public string? Email { get; set; }
+    public string? Phone { get; set; }
+    public GenderType? Gender { get; set; }
+    public string? Nationality { get; set; }
+    public MaritalStatusType? MaritalStatus { get; set; }
+
+    public List<Address>? Addresses { get; set; }
 }

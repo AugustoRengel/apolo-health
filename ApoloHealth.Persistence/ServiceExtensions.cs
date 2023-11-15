@@ -20,6 +20,7 @@ public static class ServiceExtensions
         services.AddScoped<IExamRepository, ExamRepository>();
         services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         services.AddScoped<ICustomerRepository, CustomerRepository>();
+        services.AddScoped<IAddressRepository, AddressRepository>();
         services.AddScoped<IAppointmentRepository, AppointmentRepository>();
     }
 }

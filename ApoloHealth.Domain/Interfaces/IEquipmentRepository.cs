@@ -9,5 +9,4 @@ namespace ApoloHealth.Domain.Interfaces;
 
 public interface IEquipmentRepository : IBaseRepository<Equipment>
 {
-    Task<Equipment?> GetByName(string name, CancellationToken cancellationToken);
 }

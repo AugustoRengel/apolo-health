@@ -12,7 +12,7 @@ public sealed class GetAllCustomerMapper : Profile
              opt.MapFrom(src => src.Appointments.Select(x =>
              new AppointmentDTO()
              {
-                 Id = src.Id,
+                 Id = x.Id,
                  Title = x.Title,
                  Description = x.Description,
                  RoomNumber = x.RoomNumber,

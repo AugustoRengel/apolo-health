@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 namespace ApoloHealth.Application.UseCases.ExamOperations.Create;
 
 public sealed record CreateEquipmentRequest(
-    string Name,
     string Description,
     EquipmentType Type,
     EquipmentStatus Status,
@@ -18,6 +17,5 @@ public sealed record CreateEquipmentRequest(
     EquipmentSector Sector,
     int MonthsBetweenPreventive,
     DateTime? LastPreventiveDate,
-    int MinutesOfPreventive,
-    bool RequiresTechnician
+    int MinutesOfPreventive
     ) : IRequest<CreateEquipmentResponse>;

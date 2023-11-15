@@ -1,13 +1,6 @@
 ﻿using ApoloHealth.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ApoloHealth.Persistence.Context;
 
@@ -25,83 +18,100 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
-        builder.Entity<Equipment>().HasKey(a => a.Id);
-        builder.Entity<MaintanceRecord>().HasKey(a => a.Id);
-        builder.Entity<Employee>().HasKey(a => a.Id);
-
         builder.Entity<Equipment>()
             .HasMany(a => a.MaintanceRecords);
         builder.Entity<Equipment>()
             .HasMany(a => a.Appointments);
 
-        builder.Entity<Employee>()
-            .HasMany(a => a.Addresses);
+        //builder.Entity<Employee>()
+        //    .HasMany(a => a.Addresses)
+        //    .WithOne(a => a.Person)
+        //    .HasForeignKey("PersonId");
         builder.Entity<Employee>()
             .HasMany(a => a.Appointments);
+
+        builder.Entity<Address>()
+            .HasOne(a => a.Person)
+            .WithMany(a => a.Addresses)
+            .HasForeignKey("PersonId");
 
         var guidAugusto = Guid.NewGuid();
         var guidIsabel = Guid.NewGuid();
         var guidBob = Guid.NewGuid();
         var guidAppointment = Guid.NewGuid();
         var guidExam = Guid.NewGuid();
-        var guidEquipment = Guid.NewGuid();
 
-        builder.Entity<Appointment>()
-            .HasMany(p => p.Employees)
-            .WithMany(p => p.Appointments)
-            .UsingEntity(
-                l => l.HasOne(typeof(Employee)).WithMany().HasForeignKey("EmployeeId").HasPrincipalKey(nameof(Employee.Id)),
-                r => r.HasOne(typeof(Appointment)).WithMany().HasForeignKey("AppointmentId").HasPrincipalKey(nameof(Appointment.Id)),
-                j => j.HasData(
-                    new { AppointmentId=guidAppointment, EmployeeId=guidAugusto}, 
-                    new { AppointmentId = guidAppointment, EmployeeId = guidIsabel }
-                    )
-            );
+        List<Equipment> equipmentList = new();
+        List<string> codevalues = new()
+        {
+            "CC-BE0001", "CC-BE0002", "CC-BE0003", "CC-BV0001", "CC-BV0002",
+            "CC-CD0001", "CC-EC0001", "CC-EC0002", "CC-EE0001", "CC-ME0001",
+            "CC-MF0001", "CC-AR0001", "CC-BC0001", "CC-MM0001", "CC-PR0001"
+        };
+        List<string> typeValues = new() { "1", "1", "1", "2", "2", "3", "4", "4", "5", "6", "7", "8", "9", "10", "11" }; // 15 Equipments
+        List<string> sectorvalues = new() { "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "3", "3", "3", "3" };
+        List<string> makerValues = new() { "Siemens Healthineers", "Philips Healthcare", "Medtronic", "Stryker" };
+        List<int> mbpValues = new() { 4, 4, 4, 30, 30, 10, 6, 6, 3, 8, 8, 9, 4, 5, 3 };
+        List<int> mopValues = new() { 180, 180, 180, 120, 120, 180, 240, 240, 120, 120, 120, 600, 180, 480, 180 };
+        List<Guid> equipmentsGuids = new();
 
-        builder.Entity<Appointment>()
-            .HasMany(p => p.Equipments)
-            .WithMany(p => p.Appointments)
-            .UsingEntity(
-                l => l.HasOne(typeof(Equipment)).WithMany().HasForeignKey("EquipmentId").HasPrincipalKey(nameof(Equipment.Id)),
-                r => r.HasOne(typeof(Appointment)).WithMany().HasForeignKey("AppointmentId").HasPrincipalKey(nameof(Appointment.Id)),
-                j => j.HasData(
-                    new { AppointmentId = guidAppointment, EquipmentId = guidEquipment }
-                    )
-            );
-
-        builder.Entity<Equipment>()
-            .HasData(
-            new Equipment
-            { 
-                Id = guidEquipment,
-                Name = "Raio X",
-                Description = "description",
-                Type = EquipmentType.Xray,
+        DateTime fabricationDate = DateTime.Parse("07/09/2022", new CultureInfo("pt-BR"));
+        for (int i = 0; i < 15; i++)
+        {
+            equipmentsGuids.Add(Guid.NewGuid());
+            Equipment tempEquipment = new Equipment
+            {
+                Id = equipmentsGuids[i],
+                Code = codevalues[i],
+                Description = "Description of the equipment",
+                Type = (EquipmentType)Enum.Parse(typeof(EquipmentType), typeValues[i]),
                 Status = EquipmentStatus.Operative,
-                Maker = "Siemens",
-                FabricationDate = DateTime.Now,
-                Sector = EquipmentSector.DI,
-                MonthsBetweenPreventive = 12,
-                LastPreventiveDate = DateTime.Now,
-                MinutesOfPreventive = 180
+                Maker = makerValues[i % 4],
+                FabricationDate = fabricationDate,
+                Sector = (EquipmentSector)Enum.Parse(typeof(EquipmentSector), sectorvalues[i]),
+                MonthsBetweenPreventive = mbpValues[i],
+                LastPreventiveDate = fabricationDate,
+                MinutesOfPreventive = mopValues[i]
+            };
+
+            equipmentList.Add(tempEquipment);
+        }
+
+        builder.Entity<Equipment>().HasData(equipmentList);
+
+        builder.Entity<MaintanceRecord>()
+            .HasData(
+            new MaintanceRecord
+            {
+                Id = Guid.NewGuid(),
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                Technician = "Augusto",
+                InitialState = EquipmentStatus.Inoperative,
+                FinalState = EquipmentStatus.Operative,
+                ProblemDescription = "opa",
+                SolutionDescription = "hey",
+                WasDone = true,
+                Type = MaintanceType.Corrective,
+                EquipmentId = equipmentsGuids[0]
             }
             );
 
         builder.Entity<Employee>()
             .HasData(
-            new Employee 
-            { 
-                Id= guidAugusto,
-                Name="Augusto", 
-                CPF="123.123.123.12", 
-                BirthDate= DateTime.Parse("07/09/1998", new CultureInfo("pt-BR")),
-                Email="augusto@email.com", 
-                Phone="123456", 
-                Gender=GenderType.Male, 
-                Nationality="BR",
-                MaritalStatus=MaritalStatusType.Single,
-                Role=RoleType.Technician,
-                Wage=3500
+            new Employee
+            {
+                Id = guidAugusto,
+                Name = "Augusto",
+                CPF = "123.123.123.12",
+                BirthDate = DateTime.Parse("07/09/1998", new CultureInfo("pt-BR")),
+                Email = "augusto@email.com",
+                Phone = "123456",
+                Gender = GenderType.Male,
+                Nationality = "BR",
+                MaritalStatus = MaritalStatusType.Single,
+                Role = RoleType.Technician,
+                Wage = 3500
             },
             new Employee
             {
@@ -118,6 +128,26 @@ public class AppDbContext : DbContext
                 Wage = 3000
             }
             );
+
+        builder.Entity<Customer>()
+            .HasData(
+            new Customer
+            {
+                Id = guidBob,
+                Name = "Bob",
+                CPF = "555.123.123.12",
+                BirthDate = DateTime.Parse("07/03/1997", new CultureInfo("pt-BR")),
+                Email = "bob@email.com",
+                Phone = "555456",
+                Gender = GenderType.Male,
+                Nationality = "BR",
+                MaritalStatus = MaritalStatusType.Single,
+
+                LastAppointment = DateTime.Now,
+                HealthInsurance = "Unimed"
+            }
+            );
+
         builder.Entity<Address>().HasData(
             new Address
             {
@@ -138,25 +168,19 @@ public class AppDbContext : DbContext
                 State = "São Paulo",
                 PostalCode = "30215-300",
                 Country = "BR"
-            }
-            );
-        builder.Entity<Customer>()
-            .HasData(
-            new Customer
+            },
+            new Address
             {
-                Id = guidBob,
-                Name = "Bob",
-                CPF = "555.123.123.12",
-                BirthDate = DateTime.Parse("07/03/1997", new CultureInfo("pt-BR")),
-                Email = "bob@email.com",
-                Phone = "555456",
-                Gender = GenderType.Male,
-                Nationality = "BR",
-                MaritalStatus = MaritalStatusType.Single,
-                LastAppointment = DateTime.Now,
-                HealthInsurance = "Unimed"
+                Id = Guid.NewGuid(),
+                PersonId = guidBob,
+                Street = "nome da rua 3",
+                City = "São Paulo",
+                State = "São Paulo",
+                PostalCode = "88215-300",
+                Country = "BR"
             }
             );
+
         builder.Entity<Exam>()
             .HasData(
             new Exam
@@ -166,7 +190,7 @@ public class AppDbContext : DbContext
                 Description = "usa raio-x",
                 DurationInMinutes = 30,
                 RequiredEmployeeRole = RoleType.Doctor,
-                RequiredEquipmentType = EquipmentType.Xray
+                RequiredEquipmentType = EquipmentType.ElectricScalpel
             }
             );
         builder.Entity<Appointment>()
@@ -177,11 +201,14 @@ public class AppDbContext : DbContext
                 Title = "Appointment of bob",
                 Description = "Description",
                 RoomNumber = 1,
-                StartDate=DateTime.Now,
-                EndDate=DateTime.Now,
-                WasDone=false,
-                CustomerId=guidBob,
-                ExamId=guidExam
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now,
+                WasDone = false,
+                RequiresTechnician = false,
+                EquipmentId = equipmentsGuids[0],
+                EmployeeId = guidIsabel,
+                CustomerId = guidBob,
+                ExamId = guidExam
             }
             );
 
@@ -192,7 +219,7 @@ public class AppDbContext : DbContext
                 l => l.HasOne(typeof(Employee)).WithMany().HasForeignKey("EmployeeId").HasPrincipalKey(nameof(Employee.Id)),
                 r => r.HasOne(typeof(Equipment)).WithMany().HasForeignKey("EquipmentId").HasPrincipalKey(nameof(Equipment.Id)),
                 j => j.HasData(
-                    new { EquipmentId = guidEquipment, EmployeeId = guidAugusto }
+                    new { EquipmentId = equipmentsGuids[0], EmployeeId = guidAugusto }
                     )
             );
     }
