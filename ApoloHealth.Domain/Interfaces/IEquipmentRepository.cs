@@ -9,4 +9,5 @@ namespace ApoloHealth.Domain.Interfaces;
 
 public interface IEquipmentRepository : IBaseRepository<Equipment>
 {
+    Task<List<Equipment>> GetAllOfType(EquipmentType equipmentType, CancellationToken cancellationToken);
 }

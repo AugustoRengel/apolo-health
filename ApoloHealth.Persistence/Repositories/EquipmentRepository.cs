@@ -34,4 +34,14 @@ internal class EquipmentRepository : BaseRepository<Equipment>, IEquipmentReposi
                 .ThenInclude(emp => emp.Addresses)
             .ToListAsync(cancellationToken);
     }
+
+    public async Task<List<Equipment>> GetAllOfType(EquipmentType equipmentType, CancellationToken cancellationToken)
+    {
+        return await _context.Set<Equipment>()
+            .Include(e => e.MaintanceRecords)
+            .Include(e => e.Technicians)
+                .ThenInclude(emp => emp.Addresses)
+            .Where(e => e.Type == equipmentType)
+            .ToListAsync(cancellationToken);
+    }
 }

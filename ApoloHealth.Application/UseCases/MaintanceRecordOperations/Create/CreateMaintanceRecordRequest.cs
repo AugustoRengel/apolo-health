@@ -11,12 +11,9 @@ namespace ApoloHealth.Application.UseCases.MaintanceRecordOperations.Create;
 public sealed record CreateMaintanceRecordRequest(
     DateTime StartDate,
     DateTime EndDate,
-    string Technician,
     EquipmentStatus InitialState,
-    EquipmentStatus FinalState,
     string ProblemDescription,
-    string SolutionDescription,
-    bool? WasDone,
     MaintanceType Type,
-    Guid EquipmentId
+    Guid EquipmentId,
+    Guid EmployeeId
     ) : IRequest<CreateMaintanceRecordResponse>;

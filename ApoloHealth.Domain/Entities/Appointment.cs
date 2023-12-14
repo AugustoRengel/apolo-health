@@ -16,6 +16,10 @@ public class Appointment : BaseEntity
     public bool? WasDone { get; set; }
     public bool? RequiresTechnician { get; set; }
 
+    public bool HasNotification { get; set; } = false;
+    public bool NeedsRescheduling {  get; set; } = false;
+    public string? Notification {  get; set; }
+
     public Guid? EquipmentId { get; set; }
     public Guid? EmployeeId { get; set; }
     public Guid? TechnicianId {  get; set; }

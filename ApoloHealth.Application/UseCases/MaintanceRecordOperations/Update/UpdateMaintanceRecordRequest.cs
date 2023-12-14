@@ -12,7 +12,6 @@ public sealed record UpdateMaintanceRecordRequest(
     Guid Id,
     DateTime? StartDate,
     DateTime? EndDate,
-    string? Technician,
     EquipmentStatus? InitialState,
     EquipmentStatus? FinalState,
     string? ProblemDescription,

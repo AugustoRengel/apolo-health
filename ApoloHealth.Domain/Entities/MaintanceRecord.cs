@@ -11,17 +11,17 @@ namespace ApoloHealth.Domain.Entities;
 [Owned]
 public class MaintanceRecord : BaseEntity
 {
-    public DateTime? StartDate { get; set; }
-    public DateTime? EndDate { get; set;}
-    public string? Technician {  get; set; }
-    public EquipmentStatus? InitialState { get; set; }
+    public DateTime StartDate { get; set; }
+    public DateTime EndDate { get; set;}
+    public EquipmentStatus InitialState { get; set; }
     public EquipmentStatus? FinalState { get; set; }
-    public string? ProblemDescription { get; set; }
+    public string ProblemDescription { get; set; }
     public string? SolutionDescription { get; set; }
-    public bool? WasDone { get; set; } = false;
-    public MaintanceType? Type { get; set; }
+    public bool WasDone { get; set; } = false;
+    public MaintanceType Type { get; set; }
 
-    public Guid? EquipmentId { get; set; }
+    public Guid EquipmentId { get; set; }
+    public Guid EmployeeId { get; set; }
 }
 
 public enum MaintanceType

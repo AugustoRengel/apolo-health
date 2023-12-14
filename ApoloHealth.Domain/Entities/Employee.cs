@@ -7,11 +7,13 @@ public class Employee : Person
 
     public List<Appointment> Appointments { get; set; } = new();
     public List<Equipment> Equipments { get; set; } = new();
+    public List<MaintanceRecord> MaintanceRecords { get; set; } = new();
 }
 
 public enum RoleType
 {
     Doctor = 1,
     Technician = 2,
-    Attendant = 3
+    Attendant = 3,
+    Nurse = 4
 }
